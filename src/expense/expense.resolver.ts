@@ -21,7 +21,7 @@ import { Role } from "@/auth/enum/auth.enum";
 import { Roles } from "@/auth/decorator/auth.decorator";
 
 //Req user
-import { ReqUser } from "src/auth/Types/user.types";
+import { ReqUser } from "@/auth/Types/user.types";
 
 @Resolver()
 export class ExpenseResolver {

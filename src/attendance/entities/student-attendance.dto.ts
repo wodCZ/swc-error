@@ -1,7 +1,7 @@
 import { ObjectType, Field } from "@nestjs/graphql";
 
 //Entities
-import { Student } from "src/student/entities/student.entity";
+import { Student } from "@/student/entities/student.entity";
 
 @ObjectType()
 export class StudentAttendance {
