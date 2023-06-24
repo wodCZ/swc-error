@@ -1,0 +1,51 @@
+import { InputType, Field, Int } from "@nestjs/graphql";
+import { IsOptional, IsString, IsEnum, IsNumber } from "class-validator";
+
+@InputType()
+export class StudentPaginationInput {
+    @Field(() => String, { nullable: true })
+    @IsOptional()
+    @IsString()
+    name: string;
+
+    @Field(() => String, { nullable: true })
+    @IsOptional()
+    @IsString()
+    id: string;
+
+    @Field(() => String, { nullable: true })
+    @IsOptional()
+    @IsString()
+    class: string;
+
+    @Field(() => String, { nullable: true })
+    @IsOptional()
+    @IsString()
+    shift: string;
+
+    @Field(() => String, { nullable: true })
+    @IsOptional()
+    @IsString()
+    section: string;
+
+    @Field(() => String, { nullable: true })
+    @IsOptional()
+    @IsString()
+    group: string;
+
+    @Field(() => String, { nullable: true })
+    @IsOptional()
+    @IsString()
+    @IsEnum(["ASC", "DESC"])
+    orderBy: "ASC" | "DESC";
+
+    @Field(() => Int, { nullable: true })
+    @IsOptional()
+    @IsNumber()
+    limit: number;
+
+    @Field(() => Int, { nullable: true })
+    @IsOptional()
+    @IsNumber()
+    page: number;
+}

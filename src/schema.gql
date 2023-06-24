@@ -1,0 +1,662 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type SuccessInfo {
+  message: String!
+  success: Boolean!
+}
+
+type User {
+  id: String!
+  phone: String
+  name: String
+  studentId: String
+  image: String
+  role: String
+  is_verify: Boolean
+  updated_at: DateTime!
+  created_at: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Meta {
+  itemCount: Int
+  totalItems: Int
+  itemsPerPage: Int
+  totalPages: Int
+  currentPage: Int
+}
+
+type Section {
+  id: String!
+  name: String!
+  createdBy: User!
+  updated_at: DateTime!
+  created_at: DateTime!
+}
+
+type GetSection {
+  results: [Section!]
+  meta: Meta
+}
+
+type Group {
+  id: String!
+  name: String!
+  createdBy: User
+  updated_at: DateTime!
+  created_at: DateTime!
+}
+
+type GetGroup {
+  results: [Group!]
+  meta: Meta
+}
+
+type Shift {
+  id: String!
+  name: String!
+  createdBy: User!
+  updated_at: DateTime!
+  created_at: DateTime!
+}
+
+type GetShift {
+  results: [Shift!]
+  meta: Meta
+}
+
+type Class {
+  id: String!
+  name: String!
+  section: [Section!]
+  group: [Group!]
+  shift: [Shift!]
+  createdBy: User
+  updated_at: DateTime!
+  created_at: DateTime!
+}
+
+type GetClass {
+  results: [Class!]
+  meta: Meta
+}
+
+type Student {
+  id: String!
+  studentId: String!
+  image: String
+  class: Class
+  shift: Shift
+  section: Section
+  group: Group
+  name: String!
+  roll: String!
+  session: String!
+  gender: String
+  dob: String
+  blood: String
+  religion: String
+  number: String
+  email: String
+  admissionDate: String
+  birthCertificate: String
+  fatherName: String!
+  fatherNidNumber: String
+  fatherPhone: String
+  motherName: String!
+  motherNidNumber: String
+  motherPhone: String
+  fee_start: String
+  guardianName: String
+  guardianNidNumber: String
+  guardianPhone: String
+  address: String!
+  school: String!
+  createdBy: User
+  updated_at: DateTime!
+  created_at: DateTime!
+}
+
+type GetStudent {
+  results: [Student!]
+  meta: Meta
+}
+
+type Subject {
+  id: String!
+  name: String!
+  type: String!
+  code: String!
+  priority: String
+  createdBy: User
+  updated_at: DateTime!
+  created_at: DateTime!
+}
+
+type GetSubject {
+  results: [Subject!]
+  meta: Meta
+}
+
+type Room {
+  id: String!
+  room_no: String!
+  capacity: Float!
+  createdBy: User
+  updated_at: DateTime!
+  created_at: DateTime!
+}
+
+type GetRoom {
+  results: [Room!]
+  meta: Meta
+}
+
+type Period {
+  id: String!
+  name: String!
+  start: String!
+  end: String!
+  is_break: Boolean!
+  shift: Shift
+  createdBy: User
+  updated_at: DateTime!
+  created_at: DateTime!
+}
+
+type GetPeriod {
+  results: [Period!]
+  meta: Meta
+}
+
+type Teacher {
+  id: String!
+  name: String!
+  image: String!
+  phone: String!
+  email: String!
+  dob: String!
+  gender: String!
+  nid: String!
+  education: String!
+  emergencyPhone: String
+  appointment: String
+  salary: String!
+  address: String!
+  document: String
+  createdBy: User
+  updated_at: DateTime!
+  created_at: DateTime!
+}
+
+type GetTeachers {
+  results: [Teacher!]!
+  meta: Meta!
+}
+
+type StudentAttendance {
+  id: String!
+  present: String!
+  student: Student
+  updated_at: DateTime!
+  created_at: DateTime!
+}
+
+type IncomeHead {
+  id: String!
+  title: String!
+  description: String
+  createdBy: User
+  updated_at: DateTime!
+  created_at: DateTime!
+}
+
+type GetIncomeHead {
+  results: [IncomeHead!]
+  meta: Meta
+}
+
+type Income {
+  id: String!
+  head: IncomeHead!
+  name: String!
+  amount: String!
+  invoice: String
+  date: String
+  file: String
+  description: String
+  createdBy: User
+  updated_at: DateTime!
+  created_at: DateTime!
+}
+
+type GetIncome {
+  results: [Income!]
+  meta: Meta
+}
+
+type ExpenseHead {
+  id: String!
+  title: String!
+  description: String
+  createdBy: User
+  updated_at: DateTime!
+  created_at: DateTime!
+}
+
+type GetExpenseHead {
+  results: [ExpenseHead!]
+  meta: Meta
+}
+
+type Expense {
+  id: String!
+  head: ExpenseHead!
+  name: String!
+  amount: String!
+  invoice: String
+  date: String
+  file: String
+  description: String
+  createdBy: User
+  updated_at: DateTime!
+  created_at: DateTime!
+}
+
+type GetExpense {
+  results: [Expense!]
+  meta: Meta
+}
+
+type Complain {
+  id: String!
+  title: String!
+  description: String!
+  status: String!
+  complainBy: User
+  anonymous: Boolean!
+  updated_at: DateTime!
+  created_at: DateTime!
+}
+
+type GetComplain {
+  results: [Complain!]
+  meta: Meta
+}
+
+type Path {
+  id: String
+  type: String
+}
+
+type Notification {
+  id: String!
+  title: String
+  details: String
+  image: String
+  read: Boolean
+  path: Path
+  created_at: DateTime
+}
+
+type NotifyEvent {
+  id: String!
+  title: String
+  details: String
+  image: String
+  read: Boolean
+  path: Path
+  created_at: String
+}
+
+type Receivers {
+  id: String!
+  to: String!
+}
+
+type AllNotification {
+  id: String!
+  title: String
+  details: String
+  image: String
+  read: Boolean
+  type: String
+  receivers: [Receivers!]
+  senderId: User
+  path: Path
+  created_at: DateTime
+}
+
+type GetAllNotification {
+  results: [AllNotification!]
+  meta: Meta
+}
+
+type Query {
+  getProfile: User!
+  getStudents(studentPaginationInput: StudentPaginationInput!): GetStudent!
+  getAllStudent(StudentPramsInput: StudentPramsInput!): [Student!]!
+  getStudent(id: String!): Student!
+  getStudentProfile: Student!
+  getSubjects(searchInput: SearchInput!): GetSubject!
+  getAllSubject: [Subject!]!
+  getSections(searchInput: SearchInput!): GetSection!
+  getAllSections: [Section!]!
+  getGroups(searchInput: SearchInput!): GetGroup!
+  getAllGroups: [Group!]!
+  getShifts(searchInput: SearchInput!): GetShift!
+  getAllShifts: [Shift!]!
+  getClasses(searchInput: SearchInput!): GetClass!
+  getAllClass: [Class!]!
+  getRooms(searchInput: SearchInput!): GetRoom!
+  getAllRoom: [Room!]!
+  getPeriods(searchInput: SearchInput!): GetPeriod!
+  getAllPeriod: [Period!]!
+  getTeachers(searchInput: SearchInput!): GetTeachers!
+  getAllTeacher: [Teacher!]!
+  getAttendanceReport: String!
+  getIncomeHeads(searchInput: SearchInput!): GetIncomeHead!
+  getAllIncomeHead: [IncomeHead!]!
+  getIncomes(searchInput: SearchInput!): GetIncome!
+  getAllIncome: [Income!]!
+  getExpenseHeads(searchInput: SearchInput!): GetExpenseHead!
+  getAllExpenseHead: [ExpenseHead!]!
+  getExpenses(searchInput: SearchInput!): GetExpense!
+  getAllExpense: [Expense!]!
+  getComplains(searchInput: SearchInput!): GetComplain!
+  getAllComplain: [Complain!]!
+  getNotifications: [Notification!]!
+  getAllNotifications(searchInput: SearchInput!): GetAllNotification!
+  getAllNotificationsWithoutPagination: [AllNotification!]!
+}
+
+input StudentPaginationInput {
+  name: String
+  id: String
+  class: String
+  shift: String
+  section: String
+  group: String
+  orderBy: String
+  limit: Int
+  page: Int
+}
+
+input StudentPramsInput {
+  name: String
+  id: String
+  class: String
+  shift: String
+  section: String
+  group: String
+}
+
+input SearchInput {
+  search: String
+  orderBy: String
+  limit: Int
+  page: Int
+}
+
+type Mutation {
+  registration(registrationInput: RegistrationInput!): SuccessInfo!
+  login(loginInput: LoginInput!): SuccessInfo!
+  studentLogin(studentLoginInput: StudentLoginInput!): SuccessInfo!
+  parentLogin(loginInput: LoginInput!): SuccessInfo!
+  resendCode(resendInput: ResendInput!): SuccessInfo!
+  verify(verifyInput: VerifyInput!): SuccessInfo!
+  updateProfile(profileInput: ProfileInput!): SuccessInfo!
+  searchProfile(userSearchInput: UserSearchInput!): User!
+  logout: SuccessInfo!
+  addStudent(studentInput: StudentInput!): SuccessInfo!
+  updateStudent(studentInput: StudentInput!, id: String!): SuccessInfo!
+  promoteStudent(promoteInput: PromoteInput!): SuccessInfo!
+  deleteStudent(id: String!): SuccessInfo!
+  addSubject(subjectInput: SubjectInput!): SuccessInfo!
+  updateSubject(subjectInput: SubjectInput!, id: String!): SuccessInfo!
+  deleteSubject(id: String!): SuccessInfo!
+  addSection(sectionInput: SectionInput!): SuccessInfo!
+  updateSection(sectionInput: SectionInput!, id: String!): SuccessInfo!
+  deleteSection(id: String!): SuccessInfo!
+  createGroup(groupInput: GroupInput!): SuccessInfo!
+  updateGroup(groupInput: GroupInput!, id: String!): SuccessInfo!
+  deleteGroup(id: String!): SuccessInfo!
+  addShift(shiftInput: ShiftInput!): SuccessInfo!
+  updateShift(shiftInput: ShiftInput!, id: String!): SuccessInfo!
+  deleteShift(id: String!): SuccessInfo!
+  addClass(classInput: ClassInput!): SuccessInfo!
+  updateClass(classInput: ClassInput!, id: String!): SuccessInfo!
+  deleteClass(id: String!): SuccessInfo!
+  addRoom(roomInput: RoomInput!): SuccessInfo!
+  updateRoom(roomInput: RoomInput!, id: String!): SuccessInfo!
+  deleteRoom(id: String!): SuccessInfo!
+  addPeriod(periodInput: PeriodInput!): SuccessInfo!
+  updatePeriod(periodInput: PeriodInput!, id: String!): SuccessInfo!
+  deletePeriod(id: String!): SuccessInfo!
+  addTeacher(teacherInput: TeacherInput!): SuccessInfo!
+  updateTeacher(teacherInput: TeacherInput!, id: String!): SuccessInfo!
+  deleteTeacher(id: String!): SuccessInfo!
+  createAttendanceSheet(attendanceInput: AttendanceInput!): [StudentAttendance!]!
+  addPresent(presentInput: PresentInput!): SuccessInfo!
+  addIncomeHead(incomeHeadInput: IncomeHeadInput!): SuccessInfo!
+  updateIncomeHead(incomeHeadInput: IncomeHeadInput!, id: String!): SuccessInfo!
+  deleteIncomeHead(id: String!): SuccessInfo!
+  addIncome(incomeInput: IncomeInput!): SuccessInfo!
+  updateIncome(incomeInput: IncomeInput!, id: String!): SuccessInfo!
+  deleteIncome(id: String!): SuccessInfo!
+  addExpenseHead(expenseHeadInput: ExpenseHeadInput!): SuccessInfo!
+  updateExpenseHead(expenseHeadInput: ExpenseHeadInput!, id: String!): SuccessInfo!
+  deleteExpenseHead(id: String!): SuccessInfo!
+  addExpense(expenseInput: ExpenseInput!): SuccessInfo!
+  updateExpense(expenseInput: ExpenseInput!, id: String!): SuccessInfo!
+  deleteExpense(id: String!): SuccessInfo!
+  addComplain(complainInput: ComplainInput!): SuccessInfo!
+  updateComplainStatus(complainStatusInput: ComplainStatusInput!): SuccessInfo!
+  addNotification(notificationInput: NotificationInput!): SuccessInfo!
+  markAsReadNotification(id: String!): SuccessInfo!
+}
+
+input RegistrationInput {
+  name: String!
+  phone: String!
+}
+
+input LoginInput {
+  phone: String!
+}
+
+input StudentLoginInput {
+  studentId: String!
+  password: String!
+}
+
+input ResendInput {
+  phone: String!
+}
+
+input VerifyInput {
+  phone: String!
+  otp: String!
+}
+
+input ProfileInput {
+  image: String!
+  name: String!
+}
+
+input UserSearchInput {
+  idOrPhone: String!
+}
+
+input StudentInput {
+  studentId: String!
+  image: String
+  class: String!
+  shift: String
+  section: String
+  group: String
+  name: String!
+  roll: String!
+  session: String!
+  gender: String!
+  dob: String!
+  blood: String
+  religion: String
+  number: String
+  email: String
+  admissionDate: String
+  birthCertificate: String
+  fatherName: String!
+  fatherNidNumber: String
+  fatherPhone: String
+  motherName: String!
+  fee_start: String!
+  motherNidNumber: String
+  motherPhone: String
+  guardianName: String
+  guardianNidNumber: String
+  guardianPhone: String
+  address: String!
+  school: String!
+}
+
+input PromoteInput {
+  ids: [String!]!
+  class: String
+  shift: String
+  section: String
+  group: String
+  markAs: String
+}
+
+input SubjectInput {
+  name: String!
+  type: String!
+  code: String!
+  priority: String!
+}
+
+input SectionInput {
+  name: String!
+}
+
+input GroupInput {
+  name: String!
+}
+
+input ShiftInput {
+  name: String!
+}
+
+input ClassInput {
+  name: String!
+  section: [String!]
+  group: [String!]
+  shift: [String!]!
+}
+
+input RoomInput {
+  room_no: String!
+  capacity: Float!
+}
+
+input PeriodInput {
+  name: String!
+  is_break: Boolean!
+  start: String!
+  shift: String!
+  end: String!
+}
+
+input TeacherInput {
+  name: String!
+  image: String
+  phone: String!
+  email: String!
+  dob: String!
+  gender: String!
+  nid: String!
+  education: String
+  emergencyPhone: String
+  appointment: String!
+  salary: String!
+  address: String!
+  document: String
+}
+
+input AttendanceInput {
+  class: String!
+  shift: String!
+  section: String!
+  group: String
+  date: String!
+}
+
+input PresentInput {
+  id: String!
+  present: String!
+}
+
+input IncomeHeadInput {
+  title: String!
+  description: String
+}
+
+input IncomeInput {
+  head: String!
+  name: String!
+  amount: String!
+  invoice: String
+  date: String
+  file: String
+  description: String
+}
+
+input ExpenseHeadInput {
+  title: String!
+  description: String
+}
+
+input ExpenseInput {
+  head: String!
+  name: String!
+  amount: String!
+  invoice: String
+  date: String
+  file: String
+  description: String
+}
+
+input ComplainInput {
+  title: String!
+  description: String!
+  anonymous: Boolean!
+}
+
+input ComplainStatusInput {
+  id: String!
+  status: String!
+}
+
+input NotificationInput {
+  title: String!
+  details: String!
+  image: String
+  receivers: ReceiverInput!
+  sms: Boolean!
+}
+
+input ReceiverInput {
+  to: [String!]!
+  type: String!
+}
+
+type Subscription {
+  notifyEvent: NotifyEvent!
+}
